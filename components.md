@@ -148,3 +148,59 @@ Diode (1N4007): Cathode to Arduino 5V, Anode to Fan GND
 
 </details>
 
+---
+# Web Interface
+---
+## System Backlog 
+
+### The web interface allows a user to:**
+  - Monitor all sensors in real time (_door status, temperature sensor, IR sensor_)
+  - Control actuators (_door, fan, buzzer, LED_)
+  - Manage system settings (_change keypad password, set ultrasonic/temperature threshold, reset settings_)
+  - View sensor history, alerts, and statistics.
+
+
+**Log Alerts:**
+  - **Door Access:** Time of unlock, method (web or keypad).       
+  - **Failed Password Attempts:** Keypad wrong entry, number of attempts.
+  - **Motion Alerts:** "_Someone approaching_", "_Someone at the door_".
+  - **Temperature Alerts:** “Fan ON due to high temp”.
+  - **Features:** Filter by date/event type and export logs to CSV/JSON.
+<pre>
+| Timestamp | Event           | Source  | Extra      |
+| --------- | --------------- | ------- | ---------- |
+| 14:33     | Door unlocked   | Keypad  | Code: 1234 |
+| 09:50     | Wrong attempt   | Keypad  | 3 tries    |
+| 08:11     | Someone at door | Sensors | IR Trigger |
+</pre>
+
+**Control of actuators:**
+  - **Servo (Door Lock):** Open / Close
+  - **Fan:** Turn ON/OFF override
+  - **RGB LED:** Choose (Red, Blue)
+  - **Buzzer:** Turn ON/OFF (for alarm test)
+
+**Password Management:**
+  - Change the door unlock password (Arduino keypad code).
+  - Require confirmation before saving.
+  - Minimum 4 digits.
+  - Must push new password to Arduino.
+
+**Data Visualization:**
+  - Temperature trend (line chart, last 30 seconds).
+  - Number of door unlock attempts (bar chart).
+
+**Data Analysis:**
+  - Average Temperature: 23.5°C 
+  - Total Visitors Today: 12
+  - Failed Attempts Today: 3
+  - Maximum Temperature Today: 29°C
+  - Number of times Fan Activated: 5
+
+**Device Settings:**
+  - Set temperature threshold for fan.
+  - Set ultrasonic thresholds (_someone approaching the door_).
+  - Set a new door unlock password.
+  - Reset settings to the default state.
+
+
