@@ -84,64 +84,64 @@ _No limit on number of attempts; repeat until correct code_
 
 
 <details>
-  <summary>
-  <strong>To see where each wire and pin connects, click here:</strong>
-  <summary>
+<summary>
+<strong>To see where each wire and pin connects, click here:</strong>
+<summary>
 
 ### Components were connected in the order provided below.
 
-  **Ultrasonic Sensor (HC-SR04):**
-    - VCC → 5V
-    - GND → GND
-    - TRIG → Pin 12
-    - ECHO → Pin 11
+**Ultrasonic Sensor (HC-SR04):**
+  - VCC → 5V
+  - GND → GND
+  - TRIG → Pin 12
+  - ECHO → Pin 11
 
-  **DHT11 Temperature Sensor:**
-    - VCC → 5V
-    - GND → GND
-    - DATA → Pin 2
+**DHT11 Temperature Sensor:**
+  - VCC → 5V
+  - GND → GND
+  - DATA → Pin 2
 
-  **IR Sensor:**
-    - VCC → 5V
-    - GND → GND
-    - OUT → Pin 3
+**IR Sensor:**
+  - VCC → 5V
+  - GND → GND
+  - OUT → Pin 3
 
-  **4×4 Keypad:**
-    - Row 1 → A0
-    - Row 2 → A1
-    - Row 3 → A2
-    - Row 4 → A3
-    - Column 1 → Pin 10
-    - Column 2 → A4
-    - Column 3 → A5
-    - Column 4 → Pin 13
+**4×4 Keypad:**
+  - Row 1 → A0
+  - Row 2 → A1
+  - Row 3 → A2
+  - Row 4 → A3
+  - Column 1 → Pin 10
+  - Column 2 → A4
+  - Column 3 → A5
+  - Column 4 → Pin 13
 
-  **Servo Motor (SG90):**
-    - Red (VCC) → 5V
-    - Brown (GND) → GND
-    - Orange (Signal) → Pin 9
+**Servo Motor (SG90):**
+  - Red (VCC) → 5V
+  - Brown (GND) → GND
+  - Orange (Signal) → Pin 9
 
-  **RGB LED (Common VCC)**
-    - Common Cathode → GND
-    - Red pin → Pin 5 (with 220Ω resistor)
-    - Blue pin → Pin 7 (with 220Ω resistor)
+**RGB LED (Common VCC)**
+  - Common Cathode → GND
+  - Red pin → Pin 5 (with 220Ω resistor)
+  - Blue pin → Pin 7 (with 220Ω resistor)
 
-  **Buzzer:**
-    - Positive (+) → Pin 8
-    - Negative (-) → GND
+**Buzzer:**
+  - Positive (+) → Pin 8
+  - Negative (-) → GND
 
-  **Simple Fan (2-wire with NPN Transistor):**
-  Required Components:
-    - 1x NPN Transistor (2N2222, BC547, or similar)
-    - 1x 1kΩ Resistor
-    - 1x Diode 1N4007 (for protection)
-  <pre>
-  Arduino Pin 4 → 1kΩ Resistor → Transistor Base (middle pin)
-  Transistor Emitter (left/right pin) → Arduino GND
-  Transistor Collector (left/right pin) → Fan GND (-)
-  Fan VCC (+) → Arduino 5V
-  Diode (1N4007): Cathode to Arduino 5V, Anode to Fan GND
-  </pre>
+**Simple Fan (2-wire with NPN Transistor):**
+Required Components:
+  - 1x NPN Transistor (2N2222, BC547, or similar)
+  - 1x 1kΩ Resistor
+  - 1x Diode 1N4007 (for protection)
+<pre>
+Arduino Pin 4 → 1kΩ Resistor → Transistor Base (middle pin)
+Transistor Emitter (left/right pin) → Arduino GND
+Transistor Collector (left/right pin) → Fan GND (-)
+Fan VCC (+) → Arduino 5V
+Diode (1N4007): Cathode to Arduino 5V, Anode to Fan GND
+</pre>
 
 </details>
 
