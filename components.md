@@ -82,6 +82,9 @@ _No limit on number of attempts; repeat until correct code_
 ### Main Loop flow-diagram
 ![flow-diagram](./diagrams/uml-diagrams/flow-diagram.png)
 
+## Circuit Diagram
+
+![iot-security-diagram](./diagrams/circuit-diagrams/iot-security-full.png)
 
 <details>
 <summary>
@@ -97,9 +100,9 @@ _No limit on number of attempts; repeat until correct code_
   - ECHO → Pin 11
 
 **DHT11 Temperature Sensor:**
-  - VCC → 5V
-  - GND → GND
-  - DATA → Pin 2
+  - VCC → 5V (in the middle if not defined)
+  - GND → GND (or written as "-")
+  - DATA → Pin 2 (or written as "S")
 
 **IR Sensor:**
   - VCC → 5V
@@ -132,7 +135,7 @@ _No limit on number of attempts; repeat until correct code_
 
 **Simple Fan (2-wire with NPN Transistor):**
 Required Components:
-  - 1x NPN Transistor (2N2222, BC547, or similar)
+  - 1x NPN Transistor (PN2222A)
   - 1x 1kΩ Resistor
   - 1x Diode 1N4007 (for protection)
 <pre>

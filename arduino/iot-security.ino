@@ -246,3 +246,13 @@ void setRGBColor(int red, int blue) {
 }
 
 
+/*
+
+Reference:
+Code adapted from https://lastminuteengineers.com/servo-motor-arduino-tutorial/
+Code adapted from https://lastminuteengineers.com/dht11-module-arduino-tutorial/
+Code adapted from https://lastminuteengineers.com/pir-sensor-arduino-tutorial/
+Code adapted from https://lastminuteengineers.com/arduino-keypad-tutorial/
+Code adapted from https://lastminuteengineers.com/arduino-sr04-ultrasonic-sensor-tutorial/
+
+*/
