@@ -86,7 +86,7 @@ _No limit on number of attempts; repeat until correct code_
 <details>
 <summary>
 <strong>To see where each wire and pin connects, click here:</strong>
-<summary>
+</summary>
 
 ### Components were connected in the order provided below.
 
