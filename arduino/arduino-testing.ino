@@ -16,6 +16,9 @@
  * - Code adapted from https://lastminuteengineers.com/pir-sensor-arduino-tutorial/
  * - Code adapted from https://lastminuteengineers.com/arduino-keypad-tutorial/
  * - Code adapted from https://lastminuteengineers.com/arduino-sr04-ultrasonic-sensor-tutorial/
+  * - The circuit design is adapted from https://www.youtube.com/watch?v=uwe-IMqm7GA
+ * - The circuit design is adapted from https://www.youtube.com/watch?v=01ycWiAeKpA
+ * - The circuit design is adapted from https://www.youtube.com/watch?v=qF75ZS3YjNE
  
  */
 

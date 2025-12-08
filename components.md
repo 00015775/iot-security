@@ -15,8 +15,6 @@
 - Buzzer (activate)
 - Small Fan
 
-**Purpose:** Set up all pins, sensors, and actuators.
-
 **Sensor pins:**
 - Ultrasonic (HC-SR04) → `TRIG`, `ECHO`
 - DHT11 → digital pin
@@ -34,6 +32,7 @@
 - `Keypad.h` for 4×4 keypad
 - `Servo.h` for servo motor
 - `NewPing` for Ultrasonic
+- `ArduinoJson.h` for sending data
 
 **Pin modes:**
 - Sensors: `INPUT`
@@ -45,6 +44,10 @@
 - RGB → Off
 - Buzzer → Off
 - Fan → Off
+
+**Communications:**
+- USB serial cabel
+
 
 ## Main Loop
 
@@ -147,6 +150,10 @@ Diode (1N4007): Cathode to Arduino 5V, Anode to Fan GND
 </pre>
 
 </details>
+
+## Network Diagram
+
+![network-diagram](./diagrams/network-diagrams/network-diagram.png)
 
 ---
 # Web Interface

@@ -15,6 +15,9 @@
  * - Code adapted from https://forum.arduino.cc/t/servo-motor-with-a-ultrasonic-sensor/921109
  * - Code adapted from https://www.scribd.com/document/829854684/CODE-FOR-THE-PROJECT
  * - Code adapted from https://yedianyang.medium.com/how-to-send-data-to-a-web-page-from-arduino-serial-port-7aef849ccdd6
+ * - The circuit design is adapted from https://www.youtube.com/watch?v=uwe-IMqm7GA
+ * - The circuit design is adapted from https://www.youtube.com/watch?v=01ycWiAeKpA
+ * - The circuit design is adapted from https://www.youtube.com/watch?v=qF75ZS3YjNE
  
  */
 
