@@ -1,6 +1,5 @@
 /*
  * Smart Door System with Security Features
- * Compatible with Arduino UNO R3
  * 
  * Features:
  * - Ultrasonic distance detection (HC-SR04)
@@ -10,7 +9,14 @@
  * - Servo motor door control
  * - RGB LED status indication
  * - Buzzer alerts
- * - Fan temperature control (Simple 2-wire fan)
+ * - Fan temperature control
+ * - Reference:
+ * - Code adapted from https://lastminuteengineers.com/servo-motor-arduino-tutorial/
+ * - Code adapted from https://lastminuteengineers.com/dht11-module-arduino-tutorial/
+ * - Code adapted from https://lastminuteengineers.com/pir-sensor-arduino-tutorial/
+ * - Code adapted from https://lastminuteengineers.com/arduino-keypad-tutorial/
+ * - Code adapted from https://lastminuteengineers.com/arduino-sr04-ultrasonic-sensor-tutorial/
+ 
  */
 
 // ===== LIBRARIES =====
@@ -42,13 +48,13 @@
 // Buzzer
 #define BUZZER_PIN 8
 
-// Fan (Simple 2-wire fan via transistor)
+// Fan 
 #define FAN_PIN 4
 
 // ===== THRESHOLDS =====
 #define APPROACHING_DISTANCE 50  // cm - someone approaching
 #define AT_DOOR_DISTANCE 15      // cm - someone at door
-#define TEMP_THRESHOLD 10        // °C - fan activation temperature
+#define TEMP_THRESHOLD 10        // Celsius - fan activation temperature
 #define DOOR_OPEN_TIME 4000      // ms - how long door stays open
 
 // ===== KEYPAD SETUP =====
@@ -95,7 +101,7 @@ void setup() {
   
   // Initialize Actuators
   doorServo.attach(SERVO_PIN);
-  doorServo.write(0);  // Start with door closed
+  doorServo.write(0);  // Starts with door closed
   
   pinMode(RED_PIN, OUTPUT);
   pinMode(BLUE_PIN, OUTPUT);
@@ -121,7 +127,7 @@ void loop() {
   int irState = digitalRead(IR_PIN);
   float temperature = dht.readTemperature();
   
-  // Handle distance of 0 (out of range)
+  // Handle distance of 0 
   if (distance == 0) {
     distance = MAX_DISTANCE + 1;
   }
@@ -178,7 +184,7 @@ void loop() {
       }
     }
   }
-  
+
   // Reset alerts when person moves away
   if (distance > APPROACHING_DISTANCE) {
     approachAlertShown = false;
@@ -189,7 +195,6 @@ void loop() {
   if (!isnan(temperature)) {
     if (temperature > TEMP_THRESHOLD) {
       digitalWrite(FAN_PIN, HIGH);
-      // Uncomment to see fan status
       Serial.print("Fan ON - Temp: ");
       Serial.println(temperature);
     } else {
@@ -197,7 +202,7 @@ void loop() {
     }
   }
   
-  delay(100);  // Small delay for stability
+  delay(100); 
 }
 
 // ===== HELPER FUNCTIONS =====
@@ -246,13 +251,4 @@ void setRGBColor(int red, int blue) {
 }
 
 
-/*
 
-Reference:
-Code adapted from https://lastminuteengineers.com/servo-motor-arduino-tutorial/
-Code adapted from https://lastminuteengineers.com/dht11-module-arduino-tutorial/
-Code adapted from https://lastminuteengineers.com/pir-sensor-arduino-tutorial/
-Code adapted from https://lastminuteengineers.com/arduino-keypad-tutorial/
-Code adapted from https://lastminuteengineers.com/arduino-sr04-ultrasonic-sensor-tutorial/
-
-*/

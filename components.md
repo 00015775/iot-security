@@ -153,7 +153,7 @@ Diode (1N4007): Cathode to Arduino 5V, Anode to Fan GND
 ---
 ## System Backlog 
 
-### The web interface allows a user to:**
+### The web interface allows a user to:
   - Monitor all sensors in real time (_door status, temperature sensor, IR sensor_)
   - Control actuators (_door, fan, buzzer, LED_)
   - Manage system settings (_change keypad password, set ultrasonic/temperature threshold, reset settings_)
