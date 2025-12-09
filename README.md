@@ -1,15 +1,19 @@
-# Components Logic
----
+# IoT-based Home Security System
 
+This IoT-based home security system combines 4 sensors and 4 actuators to detect motion, verify access through a keypad, and automate door control. Real-time monitoring with low-latency and remote control are provided through a web interface that displays sensor data, controls actuators, manages system settings and logs security events. Automated actions of fan cooling and door lock control, overall enhance safety and comfort. 
+
+_Link for the web application hosted on the cloud (Works on Chrome, Edge, Opera): https://iot-security.netlify.app_
+
+---
 ## Prerequisities
 
-**Sensors:** 
+**Sensors (in total 4):** 
 - Ultrasonic distance sensor (HC-SR04) 
 - Temperature & Humidity sensor (DHT11) 
 - IR sensor 
 - 4×4 Membrane Keypad 
 
-**Actuators:** 
+**Actuators (in total 4):** 
 - Servo motor (SG90)
 - LED 
 - Buzzer (activate)
@@ -210,4 +214,26 @@ Diode (1N4007): Cathode to Arduino 5V, Anode to Fan GND
   - Set a new door unlock password.
   - Reset settings to the default state.
 
+
+## Folder Tree structure
+<pre>
+iot-security/
+├──── LICENSE
+├──── README.md
+├──── paper/               # project's detailed description
+│
+├──── arduino
+│    ├── arduino-webapp-controller.ino.   # main project logic
+│    └── index.html                       # web interface 
+│
+├──── components-testing
+│    ├── actuators/                        # unit testing code actuators only
+│    ├── sensor-actuator-testing/          # unit testing code using both actuators and sensors
+│    └── sensors/                          # unit testing code sensors only
+│
+└──── diagrams
+     ├── circuit-diagrams/                  # circuit diagram for all individual components
+     ├── network-diagrams/                  # network diagram of hardwares .pkt file
+     └── uml-diagrams/                      # auxiliray system design diagrams
+</pre>
 
