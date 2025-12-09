@@ -238,6 +238,9 @@ iot-security/
 │
 └──── diagrams
      ├── circuit-diagrams/                  # circuit diagram for all individual components
+     │    ├── *.png
+     │    └── cirkit-designer/              # contains .ckt editable files of circuit diagram
+     │
      ├── network-diagrams/                  # network diagram of hardwares .pkt file
      └── uml-diagrams/                      # auxiliray system design diagrams
 </pre>
