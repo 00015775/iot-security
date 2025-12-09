@@ -8,22 +8,22 @@ _Link for the web application hosted on the cloud (Works on Chrome, Edge, Opera)
 ## Prerequisities
 
 **Sensors (in total 4):** 
-- Ultrasonic distance sensor (HC-SR04) 
-- Temperature & Humidity sensor (DHT11) 
+- Ultrasonic distance sensor (_HC-SR04_) 
+- Temperature & Humidity sensor (_DHT11_) 
 - IR sensor 
 - 4×4 Membrane Keypad 
 
 **Actuators (in total 4):** 
-- Servo motor (SG90)
+- Servo motor (_SG90_)
 - LED 
-- Buzzer (activate)
+- Buzzer (_activate_)
 - Small Fan
 
 **Sensor pins:**
-- Ultrasonic (HC-SR04) → `TRIG`, `ECHO`
+- Ultrasonic (_HC-SR04_) → `TRIG`, `ECHO`
 - DHT11 → digital pin
 - IR sensor → digital pin
-- Keypad → 8 pins (rows & columns)
+- Keypad → 8 pins (_rows & columns_)
 
 **Atuator pins:**
 - Servo → `PWM` pin
@@ -43,7 +43,7 @@ _Link for the web application hosted on the cloud (Works on Chrome, Edge, Opera)
 - Actuators: `OUTPUT`
 
 **Default states:**
-- Servo → 0° (door closed)
+- Servo → 0° (_door closed_)
 - LED → Off
 - RGB → Off
 - Buzzer → Off
@@ -66,10 +66,10 @@ _Link for the web application hosted on the cloud (Works on Chrome, Edge, Opera)
 **Keypad input:**
 - If correct code entered:
     - RGB LED → Green 
-    - Servo → Rotate to “_door open_” (simulate door opening)
+    - Servo → Rotate to “_door open_” (_simulates door opening_)
     - Voice/Text → `"Door is unlocked"`
     - Wait 3–4 seconds
-    - Servo → Rotate back to 0° (door closes)
+    - Servo → Rotate back to 0° (_door closes_)
     - Turn RGB LED off
 
 - If wrong code entered:
@@ -107,9 +107,9 @@ _No limit on number of attempts; repeat until correct code_
   - ECHO → Pin 11
 
 **DHT11 Temperature Sensor:**
-  - VCC → 5V (in the middle if not defined)
-  - GND → GND (or written as "-")
-  - DATA → Pin 2 (or written as "S")
+  - VCC → 5V (_in the middle if not defined_)
+  - GND → GND (_or written as "-"_)
+  - DATA → Pin 2 (_or written as "S"_)
 
 **IR Sensor:**
   - VCC → 5V
@@ -133,8 +133,8 @@ _No limit on number of attempts; repeat until correct code_
 
 **RGB LED (Common VCC)**
   - Common Cathode → GND
-  - Red pin → Pin 5 (with 220Ω resistor)
-  - Blue pin → Pin 7 (with 220Ω resistor)
+  - Red pin → Pin 5 (_with 220Ω resistor_)
+  - Blue pin → Pin 7 (_with 220Ω resistor_)
 
 **Buzzer:**
   - Positive (+) → Pin 8
@@ -142,9 +142,9 @@ _No limit on number of attempts; repeat until correct code_
 
 **Simple Fan (2-wire with NPN Transistor):**
 Required Components:
-  - 1x NPN Transistor (PN2222A)
+  - 1x NPN Transistor (_PN2222A_)
   - 1x 1kΩ Resistor
-  - 1x Diode 1N4007 (for protection)
+  - 1x Diode 1N4007 (_for protection_)
 <pre>
 Arduino Pin 4 → 1kΩ Resistor → Transistor Base (middle pin)
 Transistor Emitter (left/right pin) → Arduino GND
@@ -159,6 +159,7 @@ Diode (1N4007): Cathode to Arduino 5V, Anode to Fan GND
 
 ![network-diagram](./diagrams/network-diagrams/network-diagram.png)
 
+![plant-network-diagram](./diagrams/network-diagrams/plant-network-diagram.png)
 ---
 # Web Interface
 ---
@@ -188,18 +189,18 @@ Diode (1N4007): Cathode to Arduino 5V, Anode to Fan GND
 **Control of actuators:**
   - **Servo (Door Lock):** Open / Close
   - **Fan:** Turn ON/OFF override
-  - **RGB LED:** Choose (Red, Blue)
-  - **Buzzer:** Turn ON/OFF (for alarm test)
+  - **RGB LED:** Choose (_Red, Blue_)
+  - **Buzzer:** Turn ON/OFF (_for alarm test_)
 
 **Password Management:**
-  - Change the door unlock password (Arduino keypad code).
+  - Change the door unlock password (_Arduino keypad code_).
   - Require confirmation before saving.
   - Minimum 4 digits.
   - Must push new password to Arduino.
 
 **Data Visualization:**
-  - Temperature trend (line chart, last 30 seconds).
-  - Number of door unlock attempts (bar chart).
+  - Temperature trend (_line chart, last 30 seconds_).
+  - Number of door unlock attempts (_bar chart_).
 
 **Data Analysis:**
   - Average Temperature: 23.5°C 
@@ -236,4 +237,32 @@ iot-security/
      ├── network-diagrams/                  # network diagram of hardwares .pkt file
      └── uml-diagrams/                      # auxiliray system design diagrams
 </pre>
+
+## References:
+<details>
+<summary><b>to see Reference List, click here:</b></summary>
+
+ ### Reference List:
+  * Servo: https://lastminuteengineers.com/servo-motor-arduino-tutorial/
+  * DHT11: https://lastminuteengineers.com/dht11-module-arduino-tutorial/
+  * IR: https://lastminuteengineers.com/pir-sensor-arduino-tutorial/
+  * Keypad: https://lastminuteengineers.com/arduino-keypad-tutorial/
+  * Ultrasonic: https://lastminuteengineers.com/arduino-sr04-ultrasonic-sensor-tutorial/
+  * ArduinoJson: https://arduinojson.org/
+  * Code adapted from https://www.electronicsforu.com/electronics-projects/sensor-data-sending-over-web-serial
+  * Code adapted from https://forum.arduino.cc/t/servo-motor-with-a-ultrasonic-sensor/921109
+  * Code adapted from https://www.scribd.com/document/829854684/CODE-FOR-THE-PROJECT
+  * Code adapted from https://yedianyang.medium.com/how-to-send-data-to-a-web-page-from-arduino-serial-port-7aef849ccdd6
+  * The circuit design is adapted from https://www.youtube.com/watch?v=uwe-IMqm7GA
+  * The circuit design is adapted from https://www.youtube.com/watch?v=01ycWiAeKpA
+  * The circuit design is adapted from https://www.youtube.com/watch?v=qF75ZS3YjNE
+  * Code adapted from https://github.com/funnierinspanish/web-serial-example
+  * Code adapted from https://github.com/kjj6198/web-serial-api?tab=readme-ov-file
+  * Code adapted from https://www.makerspace-online.com/controlling-microcontrollers-over-usb-with-the-web-serial-api
+  * Code adapted from https://github.com/svendahlstrand/web-serial-api
+  * Information learned from https://foostack.ru/web-serial-api-arduino/
+  * Code adapted from https://www.youtube.com/watch?v=a8UhkWDP-dI
+  * Code adapted from https://www.youtube.com/watch?v=rkiDjfTt4T0
+
+</details>
 
