@@ -408,7 +408,7 @@
     // Chart setup
     let tempChart;
     
-    // Connect to Arduino via Web Serial API
+    // Connects to Arduino
     async function connectSerial() {
       try {
         port = await navigator.serial.requestPort();
@@ -430,7 +430,7 @@
       }
     }
     
-    // Disconnect from Arduino
+    // Disconnects from Arduino
     async function disconnectSerial() {
       if (reader) {
         await reader.cancel();
@@ -754,5 +754,6 @@ Information learned from https://foostack.ru/web-serial-api-arduino/
 Code adapted from https://www.electronicsforu.com/electronics-projects/sensor-data-sending-over-web-serial
 Code adapted from https://www.youtube.com/watch?v=a8UhkWDP-dI
 Code adapted from https://www.youtube.com/watch?v=rkiDjfTt4T0
+
 -->
 

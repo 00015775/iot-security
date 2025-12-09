@@ -9,7 +9,7 @@ DHT dht(DHT_PIN, DHT_TYPE);
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("\n--- DHT11 & Fan Test ---");
+  Serial.println("\n DHT11 & Fan Test ");
   
   dht.begin();
   pinMode(FAN_PIN, OUTPUT);
@@ -19,7 +19,7 @@ void setup() {
   delay(2000);
 
   // Quick fan test
-  Serial.println("\n>> Testing fan directly...");
+  Serial.println("\nTesting fan directly...");
   digitalWrite(FAN_PIN, HIGH);
   Serial.println("Fan ON (5 seconds)");
   delay(5000);
@@ -44,14 +44,13 @@ void loop() {
 
     if (t > TEMP_THRESHOLD) {
       digitalWrite(FAN_PIN, HIGH);
-      Serial.println("Fan ON (Temp above threshold)");
+      Serial.println("Fan ON: Temp above threshold");
     } else {
       digitalWrite(FAN_PIN, LOW);
-      Serial.println("Fan OFF (Temp below threshold)");
+      Serial.println("Fan OFF: Temp below threshold");
     }
   }
 
-  Serial.println("-----------------------------");
   delay(2000);
 }
 

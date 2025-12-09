@@ -22,13 +22,13 @@
  
  */
 
-// ===== LIBRARIES =====
+// LIBRARIES
 #include <DHT.h>
 #include <Keypad.h>
 #include <Servo.h>
 #include <NewPing.h>
 
-// ===== PIN DEFINITIONS =====
+// PINS
 // Ultrasonic Sensor (HC-SR04)
 #define TRIG_PIN 12
 #define ECHO_PIN 11
@@ -54,13 +54,13 @@
 // Fan 
 #define FAN_PIN 4
 
-// ===== THRESHOLDS =====
+// THRESHOLDS
 #define APPROACHING_DISTANCE 50  // cm - someone approaching
 #define AT_DOOR_DISTANCE 15      // cm - someone at door
 #define TEMP_THRESHOLD 10        // Celsius - fan activation temperature
 #define DOOR_OPEN_TIME 4000      // ms - how long door stays open
 
-// ===== KEYPAD SETUP =====
+// KEYPAD SETUP
 const byte ROWS = 4;
 const byte COLS = 4;
 
@@ -71,38 +71,31 @@ char keys[ROWS][COLS] = {
   {'*','0','#','D'}
 };
 
-// Connect keypad ROW pins to Arduino pins
 byte rowPins[ROWS] = {A0, A1, A2, A3};
-// Connect keypad COLUMN pins to Arduino pins
 byte colPins[COLS] = {10, A4, A5, 13};
 
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 
-// ===== OBJECT INSTANCES =====
+// OBJECT INSTANCES
 NewPing sonar(TRIG_PIN, ECHO_PIN, MAX_DISTANCE);
 DHT dht(DHT_PIN, DHT_TYPE);
 Servo doorServo;
 
-// ===== GLOBAL VARIABLES =====
+// GLOBAL VARIABLES
 String correctCode = "1234";  
 String enteredCode = "";
 bool doorOpen = false;
 bool approachAlertShown = false;
 bool doorAlertShown = false;
 
-// ===== SETUP FUNCTION =====
-void setup() {
-  // Initialize Serial Monitor
+// SETUP FUNCTION
+void setup(){ 
   Serial.begin(9600);
-  Serial.println("=================================");
   Serial.println("Smart Door System Starting...");
-  Serial.println("=================================");
   
-  // Initialize Sensors
   pinMode(IR_PIN, INPUT);
   dht.begin();
   
-  // Initialize Actuators
   doorServo.attach(SERVO_PIN);
   doorServo.write(0);  // Starts with door closed
   
@@ -111,19 +104,17 @@ void setup() {
   pinMode(BUZZER_PIN, OUTPUT);
   pinMode(FAN_PIN, OUTPUT);
   
-  // Set default states
+  // Setting default states
   setRGBColor(0, 0);  // RGB off
   digitalWrite(BUZZER_PIN, LOW);
   digitalWrite(FAN_PIN, LOW);
   
   Serial.println("System Ready!");
-  Serial.println("Default code: 1234");
   Serial.println("Press '#' to submit, '*' to clear");
-  Serial.println("=================================\n");
   delay(1000);
 }
 
-// ===== MAIN LOOP =====
+// MAIN LOOP
 void loop() {
   // Read sensor values
   int distance = sonar.ping_cm();
@@ -135,12 +126,11 @@ void loop() {
     distance = MAX_DISTANCE + 1;
   }
   
-  // ===== PROXIMITY DETECTION =====
-  
+  // PROXIMITY DETECTION
   // Check if someone is approaching
   if (distance < APPROACHING_DISTANCE && distance > AT_DOOR_DISTANCE) {
     if (!approachAlertShown && !doorOpen) {
-      Serial.println(">>> Someone is approaching the door");
+      Serial.println("Someone is approaching the door");
       approachAlertShown = true;
       doorAlertShown = false;
     }
@@ -149,12 +139,12 @@ void loop() {
   // Check if someone is at the door
   if (distance < AT_DOOR_DISTANCE || irState == LOW) {
     if (!doorAlertShown && !doorOpen) {
-      Serial.println(">>> Someone is at the door. Please enter the code on keypad");
+      Serial.println("Someone is at the door. Please enter the code on keypad");
       doorAlertShown = true;
       approachAlertShown = false;
     }
     
-    // ===== KEYPAD INPUT HANDLING =====
+    // KEYPAD INPUT HANDLING
     char key = keypad.getKey();
     
     if (key) {
@@ -167,11 +157,11 @@ void loop() {
         
         if (enteredCode == correctCode) {
           // CORRECT CODE
-          Serial.println(">>> Door is unlocked");
+          Serial.println("Door is unlocked");
           unlockDoor();
         } else {
           // WRONG CODE
-          Serial.println(">>> Wrong code! Try again.");
+          Serial.println("Wrong code! Try again.");
           wrongCodeAlert();
         }
         
@@ -194,7 +184,7 @@ void loop() {
     doorAlertShown = false;
   }
   
-  // ===== TEMPERATURE CONTROL =====
+  // TEMPERATURE CONTROL
   if (!isnan(temperature)) {
     if (temperature > TEMP_THRESHOLD) {
       digitalWrite(FAN_PIN, HIGH);
@@ -208,9 +198,7 @@ void loop() {
   delay(100); 
 }
 
-// ===== HELPER FUNCTIONS =====
-
-// Function to unlock door (correct code)
+// HELPER FUNCTIONS
 void unlockDoor() {
   doorOpen = true;
   

@@ -2,7 +2,6 @@
  * Smart Door System with USB Serial Communication
  * Direct USB connection to computer for web interface
  * 
- * Protocol: JSON commands over Serial (9600 baud)
  * 
  * References:
  * - Servo: https://lastminuteengineers.com/servo-motor-arduino-tutorial/
@@ -27,7 +26,7 @@
 #include <NewPing.h>
 #include <ArduinoJson.h>
 
-// ===== PIN DEFINITIONS =====
+// PINS
 #define TRIG_PIN 12
 #define ECHO_PIN 11
 #define MAX_DISTANCE 200
@@ -44,13 +43,13 @@
 #define BUZZER_PIN 8
 #define FAN_PIN 4
 
-// ===== THRESHOLDS, can be changed via web =====
+// THRESHOLDS, can be changed via web
 int approachingDistance = 50;
 int atDoorDistance = 15;
 int tempThreshold = 10;
 #define DOOR_OPEN_TIME 4000
 
-// ===== KEYPAD SETUP =====
+// KEYPAD SETUP
 const byte ROWS = 4;
 const byte COLS = 4;
 
@@ -66,12 +65,12 @@ byte colPins[COLS] = {10, A4, A5, 13};
 
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 
-// ===== OBJECTS =====
+// OBJECTS
 NewPing sonar(TRIG_PIN, ECHO_PIN, MAX_DISTANCE);
 DHT dht(DHT_PIN, DHT_TYPE);
 Servo doorServo;
 
-// ===== VARIABLES =====
+// VARIABLES
 String correctCode = "1234";  
 String enteredCode = "";
 bool doorOpen = false;
@@ -85,7 +84,7 @@ const long sensorInterval = 1000;
 
 int wrongAttempts = 0;
 
-// ===== SETUP =====
+// SETUP
 void setup() {
   Serial.begin(9600);
   
@@ -105,7 +104,7 @@ void setup() {
   delay(1000);
 }
 
-// ===== MAIN LOOP =====
+// MAIN LOOP
 void loop() {
   // Handle commands from web interface
   if (Serial.available()) {
@@ -133,7 +132,7 @@ void loop() {
   delay(100);
 }
 
-// ===== SEND SENSOR DATA =====
+// SEND SENSOR DATA
 void sendSensorData() {
   StaticJsonDocument<256> doc;
   
@@ -156,7 +155,7 @@ void sendSensorData() {
   Serial.println();
 }
 
-// ===== PROCESS WEB COMMANDS =====
+// PROCESS WEB COMMANDS
 void processCommand(String command) {
   StaticJsonDocument<256> doc;
   DeserializationError error = deserializeJson(doc, command);
@@ -234,7 +233,7 @@ void processCommand(String command) {
   }
 }
 
-// ===== PROXIMITY DETECTION =====
+// PROXIMITY DETECTION
 void handleProximityDetection() {
   int distance = sonar.ping_cm();
   if (distance == 0) distance = MAX_DISTANCE + 1;
@@ -263,7 +262,7 @@ void handleProximityDetection() {
   }
 }
 
-// ===== KEYPAD INPUT =====
+// KEYPAD INPUT
 void handleKeypadInput() {
   char key = keypad.getKey();
   
@@ -289,7 +288,7 @@ void handleKeypadInput() {
   }
 }
 
-// ===== TEMPERATURE CONTROL =====
+// TEMPERATURE CONTROL
 void handleTemperatureControl() {
   float temperature = dht.readTemperature();
   
@@ -310,7 +309,7 @@ void handleTemperatureControl() {
   }
 }
 
-// ===== DOOR CONTROL =====
+// DOOR CONTROL
 void unlockDoor() {
   doorOpen = true;
   setRGBColor(255, 0);
@@ -346,13 +345,13 @@ void wrongCodeAlert() {
   setRGBColor(0, 0);
 }
 
-// ===== RGB LED =====
+// RGB LED
 void setRGBColor(int red, int blue) {
   analogWrite(RED_PIN, red);
   analogWrite(BLUE_PIN, blue);
 }
 
-// ===== LOGGING =====
+// LOGGING
 void sendLog(String event, String source, String extra) {
   StaticJsonDocument<256> doc;
   doc["type"] = "log";
@@ -365,7 +364,7 @@ void sendLog(String event, String source, String extra) {
   Serial.println();
 }
 
-// ===== SEND CURRENT SETTINGS =====
+// SEND CURRENT SETTINGS
 void sendSettings() {
   StaticJsonDocument<256> doc;
   doc["type"] = "settings";

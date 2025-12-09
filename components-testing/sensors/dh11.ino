@@ -34,3 +34,4 @@ the middle pin is VCC
 Reference:
 Code adapted from https://lastminuteengineers.com/dht11-module-arduino-tutorial/
 */
+
