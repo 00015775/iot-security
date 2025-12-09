@@ -92,7 +92,9 @@ _No limit on number of attempts; repeat until correct code_
 ## Circuit Diagram
 
 <!-- ![iot-security-diagram](./diagrams/circuit-diagrams/iot-security-full.png) -->
-<img align="center" src="./diagrams/circuit-diagrams/iot-security-full.png"/>
+<p align="center">
+<img src="./diagrams/circuit-diagrams/iot-security-full.png"/>
+</p>
 
 <details>
 <summary>
