@@ -160,9 +160,11 @@ Diode (1N4007): Cathode to Arduino 5V, Anode to Fan GND
 ![network-diagram](./diagrams/network-diagrams/network-diagram.png)
 
 ![plant-network-diagram](./diagrams/network-diagrams/plant-network-diagram.png)
+
 ---
+
 # Web Interface
----
+
 ## System Backlog 
 
 ### The web interface allows a user to:
@@ -221,7 +223,9 @@ Diode (1N4007): Cathode to Arduino 5V, Anode to Fan GND
 iot-security/
 ├──── LICENSE
 ├──── README.md
-├──── paper/               # project's detailed description
+│
+├──── paper/               
+│     └── IoT_Report_00015775.pdf         # project's detailed description
 │
 ├──── arduino
 │    ├── arduino-webapp-controller.ino.   # main project logic
